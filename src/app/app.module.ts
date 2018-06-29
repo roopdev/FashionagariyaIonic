@@ -6,6 +6,7 @@ import { config } from './app.firebaseconfig';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -18,11 +19,13 @@ import { SettingsPage } from '../pages/settings/settings';
 import { BlogsPage } from '../pages/blogs/blogs';
 import { PasswordresetPage } from '../pages/passwordreset/passwordreset';
 import { ProfilepicPage } from '../pages/profilepic/profilepic';
+import { SingleprodPage } from '../pages/singleprod/singleprod';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user';
+import { ProductProvider } from '../providers/product';
 
 @NgModule({
   declarations: [
@@ -36,12 +39,14 @@ import { UserProvider } from '../providers/user/user';
     SettingsPage,
     BlogsPage,
     PasswordresetPage,
-    ProfilepicPage
+    ProfilepicPage,
+    SingleprodPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {tabsPlacement: 'top'}),
-    AngularFireModule.initializeApp(config)
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,7 +60,8 @@ import { UserProvider } from '../providers/user/user';
     SettingsPage,
     BlogsPage,
     PasswordresetPage,
-    ProfilepicPage
+    ProfilepicPage,
+    SingleprodPage
   ],
   providers: [
     StatusBar,
@@ -63,7 +69,8 @@ import { UserProvider } from '../providers/user/user';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuth,
     AuthProvider,
-    UserProvider
+    UserProvider,
+    ProductProvider
   ]
 })
 export class AppModule {}
